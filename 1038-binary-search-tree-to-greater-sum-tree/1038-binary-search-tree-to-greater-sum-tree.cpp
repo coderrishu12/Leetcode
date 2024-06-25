@@ -11,21 +11,22 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root, int &sum){
+    int sum=0;
+    void solve(TreeNode* root){
         if(!root){
             return;
         }
-        solve(root->right,sum);
+        solve(root->right);
         sum+=root->val;
         root->val=sum;
-        solve(root->left, sum);
+        solve(root->left );
     }
     
     TreeNode* bstToGst(TreeNode* root) {
         
-        int sum=0;
         
-        solve(root, sum);
+        
+        solve(root);
         
         return root;
     }
