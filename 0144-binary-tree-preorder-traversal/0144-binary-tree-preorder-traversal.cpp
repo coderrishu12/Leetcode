@@ -11,21 +11,33 @@
  */
 class Solution {
 public:
-    void preOrderTraversal(TreeNode* root, vector<int>& ans){
-        if(!root){
-            return;
-        }
-        ans.push_back(root->val);
-        preOrderTraversal(root->left, ans);
-        preOrderTraversal(root->right, ans);
-    }
+    // Approach 1 by Recursion
+    // void preOrderTraversal(TreeNode* root, vector<int>& ans){
+    //     if(!root){
+    //         return;
+    //     }
+    //     ans.push_back(root->val);
+    //     preOrderTraversal(root->left, ans);
+    //     preOrderTraversal(root->right, ans);
+    // }
     vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> preorder;
+        if(root==NULL) return preorder;
         
-        
-        vector<int> ans;
-        preOrderTraversal(root, ans);
-        return ans;
+        stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty()){
+            root=st.top();
+            st.pop();
+            
+            preorder.push_back(root->val);
+            if(root->right) st.push(root->right);
+            if(root->left) st.push(root->left);
+        }
+        return preorder;
+        // vector<int> ans;
+        // preOrderTraversal(root, ans);
+        // return ans;
     
-        // return root;
     }
 };
