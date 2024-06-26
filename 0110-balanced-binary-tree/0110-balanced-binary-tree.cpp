@@ -24,7 +24,7 @@ public:
         return max(lefti,righti)+1;
     }
     bool isBalanced(TreeNode* root) {
-//         Approach 2
+//         Approach 2 TC-> O(N), SC->O(N)
         // if(root==NULL) return true;
         return solve(root) !=-1;
         
