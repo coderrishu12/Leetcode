@@ -23,13 +23,13 @@ public:
     bool isBalanced(TreeNode* root) {
         if(root==NULL) return true;
         
+        int diff= abs(solve(root->left)-solve(root->right));
+        if(diff >1) return false;
         
         bool lefti= isBalanced(root->left);
         bool righti= isBalanced(root->right);
-        bool diff= (abs(solve(root->left)-solve(root->right))<=1);
-        // if(diff >1) return false;
         
-        if(diff &&lefti && righti) return true;
+        if(lefti && righti) return true;
         return false;
         
         
