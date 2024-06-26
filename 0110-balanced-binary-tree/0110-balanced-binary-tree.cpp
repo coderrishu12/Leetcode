@@ -17,20 +17,27 @@ public:
         if(!root) return 0;
         
         int lefti= solve(root->left);
+        if(lefti==-1) return -1;
         int righti= solve(root->right);
-        return 1+max(lefti,righti);
+        if(righti==-1) return -1;
+        if(abs(lefti-righti)>1) return -1;
+        return max(lefti,righti)+1;
     }
     bool isBalanced(TreeNode* root) {
-        if(root==NULL) return true;
+//         Approach 2
+        // if(root==NULL) return true;
+        return solve(root) !=-1;
         
-        int diff= abs(solve(root->left)-solve(root->right));
-        if(diff >1) return false;
         
-        bool lefti= isBalanced(root->left);
-        bool righti= isBalanced(root->right);
+//         Approach 1
+//         int diff= abs(solve(root->left)-solve(root->right));
+//         if(diff >1) return false;
         
-        if(lefti && righti) return true;
-        return false;
+//         bool lefti= isBalanced(root->left);
+//         bool righti= isBalanced(root->right);
+        
+//         if(lefti && righti) return true;
+//         return false;
         
         
     }
