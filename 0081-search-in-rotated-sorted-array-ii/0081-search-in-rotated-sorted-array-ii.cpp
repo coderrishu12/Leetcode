@@ -5,7 +5,7 @@ public:
         
         for(auto &ele:nums){
             mp[ele]++;
-            if(mp[ele]>=1 && ele==target){
+            if(mp[target ]>=1 ){
                 return true;
             }
         }
