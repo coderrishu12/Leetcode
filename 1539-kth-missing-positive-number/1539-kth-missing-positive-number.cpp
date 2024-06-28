@@ -11,7 +11,7 @@ public:
                 high=mid-1;
             }
         }
-        return k+high+1;
+        return low+k;
         
 //         Approach 1(Brute Force)
 //         int K=k;
