@@ -1,3 +1,6 @@
+Same as Book allocation Problem
+
+
 class Solution {
 public:
     int canAccumulate(vector<int>& nums, int mid){
