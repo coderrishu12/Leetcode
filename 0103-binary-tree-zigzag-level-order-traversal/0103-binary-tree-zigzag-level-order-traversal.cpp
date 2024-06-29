@@ -1,0 +1,78 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        vector<vector<int>> result;
+        
+        if(!root) return result;
+        
+        queue<TreeNode*> q;
+        q.push(root);
+        bool flag = true;
+        
+        while(!q.empty()){
+            
+            int n= q.size();
+            vector<int> level;
+            
+            for(int i=0;i<n;i++){
+                TreeNode *node= q.front();
+                q.pop();
+                level.push_back(node->val);
+                
+                
+                if(node->right) q.push(node->right);
+                if(node->left) q.push(node->left);
+            }    
+                if(flag){
+                    reverse(level.begin(), level.end());
+                }
+                
+                result.push_back(level);
+                     flag=!flag; 
+        }
+        return result;
+//         vector<int>support;
+//             int n=q.size();
+//             for(int i=0;i<n;i++)
+//             {
+//                 support.push_back(q.front()->val);
+//                 TreeNode* temp=q.front();
+//                 q.pop();
+                
+//                     if(temp->right!=NULL)
+//                     {
+//                         q.push(temp->right);
+//                     }
+//                     if(temp->left!=NULL)
+//                     {
+//                         q.push(temp->left);
+//                     }
+//             }
+//             if(!a)
+//             {
+//                 ans.push_back(support);
+//                 a=true;
+//             }
+//             else
+//             {
+//                 reverse(support.begin(),support.end());
+//                 ans.push_back(support);
+//                 a=false;
+//             }
+            
+//         }
+//         return ans;
+        
+    }
+};
