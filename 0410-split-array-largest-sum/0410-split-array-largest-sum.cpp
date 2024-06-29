@@ -14,16 +14,16 @@ public:
     }
     int splitArray(vector<int>& nums, int k) {
         int low = *max_element(nums.begin(), nums.end()), high=accumulate(nums.begin(), nums.end(), 0);
-        int ans=-1;
+        // int ans=-1;
         while(low<=high){
             int mid= low+(high-low)/2;
-            if(canAccumulate(nums, mid)<=k){
-                ans= mid;
-                high=mid-1;
-            }else{
+            if(canAccumulate(nums, mid)>k){
+                // ans= mid;
                 low=mid+1;
+            }else{
+                high=mid-1;
             }
         }
-        return ans;
+        return low;
     }
 };
