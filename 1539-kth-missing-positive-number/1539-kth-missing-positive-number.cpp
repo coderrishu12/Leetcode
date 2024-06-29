@@ -11,9 +11,9 @@ public:
                 high=mid-1;
             }
         }
-        return low+k;
+        return high+k+1;
         
-//         Approach 1(Brute Force)
+//         Approach 1(Brute Force) O(N)
 //         int K=k;
     
 //         for(int i=0;i<arr.size();i++){
