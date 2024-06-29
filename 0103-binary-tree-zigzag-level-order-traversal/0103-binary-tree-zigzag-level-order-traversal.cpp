@@ -42,37 +42,6 @@ public:
                      flag=!flag; 
         }
         return result;
-//         vector<int>support;
-//             int n=q.size();
-//             for(int i=0;i<n;i++)
-//             {
-//                 support.push_back(q.front()->val);
-//                 TreeNode* temp=q.front();
-//                 q.pop();
-                
-//                     if(temp->right!=NULL)
-//                     {
-//                         q.push(temp->right);
-//                     }
-//                     if(temp->left!=NULL)
-//                     {
-//                         q.push(temp->left);
-//                     }
-//             }
-//             if(!a)
-//             {
-//                 ans.push_back(support);
-//                 a=true;
-//             }
-//             else
-//             {
-//                 reverse(support.begin(),support.end());
-//                 ans.push_back(support);
-//                 a=false;
-//             }
-            
-//         }
-//         return ans;
-        
+
     }
 };
