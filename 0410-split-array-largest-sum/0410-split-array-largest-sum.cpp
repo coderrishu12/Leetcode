@@ -1,4 +1,4 @@
-Same as Book allocation Problem
+Same as Book allocation Problem || Painter's Partition
 
 
 class Solution {
