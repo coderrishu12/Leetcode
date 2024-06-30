@@ -1,34 +1,57 @@
 class Solution {
 public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-    int n1 = nums1.size();
-    int n2 = nums2.size();
-    int total = n1 + n2;
-    int left = (total + 1) / 2;  // index of the left median
-    int right = (total + 2) / 2; // index of the right median (for even total)
-
-    int i = 0, j = 0;
-    int count = 0;
-    int median1 = 0, median2 = 0;
-
-    while (i < n1 || j < n2) {
-        if (j >= n2 || (i < n1 && nums1[i] <= nums2[j])) {
-            median1 = nums1[i];
-            i++;
-        } else {
-            median1 = nums2[j];
-            j++;
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2){
+        int n1=nums1.size(), n2=nums2.size();
+        int i =  0,     j=0;
+        int idx2 = (n1+n2)/2, idx1= ((n1+n2)/2)-1;
+        int k=0;
+        int ele1=-1, ele2=-1;
+        
+        while(i<n1 && j<n2){
+            if(nums1[i]<nums2[j]){
+                if(k==idx1){
+                    ele1=nums1[i];
+                }else if(k==idx2){
+                    ele2=nums1[i];
+                }
+                i++;
+            }else{
+                if(k==idx1){
+                    ele1=nums2[j];
+                }else if(k==idx2){
+                    ele2=nums2[j];
+                }
+                j++;
+            }
+            k++;
         }
-        count++;
-        if (count == left)
-            median2 = median1;
-        if (count == right)
-            return (median1 + median2) / 2.0;
-    }
-
-    return 0.0; // This line should not be reached under normal circumstances
-
-
+        
+        while(i<n1){
+            if(k==idx1){
+                    ele1=nums1[i];
+                }else if(k==idx2){
+                    ele2=nums1[i];
+                }
+                i++;
+            k++;
+        }
+        
+        while(j<n2){
+            if(k==idx1){
+                    ele1=nums2[j];
+                }else if(k==idx2){
+                    ele2=nums2[j];
+                }
+                j++;
+            k++;
+        }
+        
+        if(((n1+n2)%2)==1){
+            return ele2;
+        }
+        
+        return (ele1+ele2)/2.0;
+        
         
         // int n1=nums1.size(), n2=nums2.size();
         // int i=0, j=0;
