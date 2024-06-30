@@ -14,10 +14,22 @@ public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
           int m=matrix[0].size();
         int n=matrix.size();
-         // Approach 1
-        for(int i=0;i<n;i++){
-            if(lowerBound(matrix[i],m, target)) return true;;
+        
+//         Approach 2 
+        int row=0, col=m-1;
+        while(row<n && col>=0){
+            if(matrix[row][col]==target){
+                return true;
+            }
+            else if(matrix[row][col]<target) row++;
+            else col--;
         }
         return false;
+        
+        //   Approach 1
+        // for(int i=0;i<n;i++){
+        //     if(lowerBound(matrix[i],m, target)) return true;;
+        // }
+        // return false;
     }
 };
