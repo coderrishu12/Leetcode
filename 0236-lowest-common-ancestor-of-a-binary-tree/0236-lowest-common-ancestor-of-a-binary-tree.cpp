@@ -29,8 +29,20 @@ public:
         }
     }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        TreeNode* ans=nullptr;
-        DFS(root, p, q , ans);
-        return  ans;
+        //Approach 2
+        if(root==NULL || root==p || root==q) return root;
+        
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
+        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+        
+        if(left==NULL) return right;
+        else if(right==NULL) return left;
+        else return root;
+        
+        
+        //Approach 1
+        // TreeNode* ans=nullptr;
+        // DFS(root, p, q , ans);
+        // return  ans;
     }
 };
