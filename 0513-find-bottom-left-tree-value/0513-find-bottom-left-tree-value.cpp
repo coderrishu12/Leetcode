@@ -24,14 +24,18 @@ public:int maxDepth;
 
 //     }
     int findBottomLeftValue(TreeNode* root) {
-//         Approach 2 BFS
-        queue<TreeNode*> q;
+//         Approach 3 Level by Level
+          queue<TreeNode*> q;
         q.push(root);
         int maxi=-1;
         while(!q.empty()){
-            TreeNode* root = q.front();
-            q.pop();
-            maxi=root->val;
+            int n=q.size();
+            while(n--){
+                TreeNode* root = q.front();
+                q.pop();
+                maxi=root->val;
+                
+            
             
             if(root->right){
                 q.push(root->right);
@@ -39,8 +43,28 @@ public:int maxDepth;
             if(root->left){
                 q.push(root->left);
             }
+            }
         }
         return maxi;
+        
+//         Approach 2 BFS
+        
+//         queue<TreeNode*> q;
+//         q.push(root);
+//         int maxi=-1;
+//         while(!q.empty()){
+//             TreeNode* root = q.front();
+//             q.pop();
+//             maxi=root->val;
+            
+//             if(root->right){
+//                 q.push(root->right);
+//             }
+//             if(root->left){
+//                 q.push(root->left);
+//             }
+//         }
+        // return maxi;
         
         
 //         Approach 1 DFS
