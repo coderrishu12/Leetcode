@@ -15,10 +15,9 @@ public:
         return false;
     }
     vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
+//         Approach 2 Without dfsVis
         int n=graph.size();
-        
         vector<int> vis(n,0);
-        
         
         for(int i=0;i<n;i++){
             if(vis[i]==0 && isCyclicDFS(graph, vis, i)==0){
@@ -32,6 +31,27 @@ public:
             }
         }
         return ans;
+
+        
+        
+//          Approach 1 with dfsVis
+//         int n=graph.size();
+        
+//         vector<int> vis(n,0);
+//         vector<int> dfsVis(n,0);
+        
+//         for(int i=0;i<n;i++){
+//             if(vis[i]==0 && isCyclicDFS(graph, vis, dfsVis, i)==0){
+//                 continue;
+//             }
+//         }
+//         vector<int> ans;
+//         for(int i=0;i<n;i++){
+//             if(dfsVis[i]==0){
+//                 ans.push_back(i);
+//             }
+//         }
+//         return ans;
 
     }
 };
