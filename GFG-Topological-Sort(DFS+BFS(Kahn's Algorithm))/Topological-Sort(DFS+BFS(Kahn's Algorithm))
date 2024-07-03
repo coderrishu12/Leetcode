@@ -1,0 +1,67 @@
+class Solution
+{
+	public:
+	 void DFS(vector<int> adj[], vector<bool>& vis, int u, stack<int>& st){
+        vis[u]=true;
+        
+        for(auto &v: adj[u]){
+            if(!vis[v]){
+                DFS(adj, vis, v, st);
+            }
+        }
+        st.push(u);
+	 }
+	 
+	
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	   // Topological Sort using BFS(Kahn's Algorithm)
+	   vector<int> indegree(V,0);
+	   
+	   for(int i=0;i<V;i++){
+	       for(auto &v: adj[i]){
+	           indegree[v]++;
+	       }
+	   }
+	   
+	   queue<int> q;
+	   
+	   for(int i=0;i<V;i++){
+	       if(indegree[i]==0){
+	           q.push(i);
+	       }
+	   }
+	   
+	   vector<int> result;
+	   while(!q.empty()){
+	       int u=q.front();
+	       result.push_back(u);
+	       q.pop();
+	       
+	       for(auto &v: adj[u]){
+	           indegree[v]--;
+	           if(indegree[v]==0){
+	               q.push(v);
+	           }
+	       }
+	   }
+	   return result;
+	    
+	   // Topological Sort using DFS
+	    
+	   // vector<bool> vis(V,false);
+	   // stack<int> st;
+	   // for(int i=0;i<V;i++){
+	   //     if(!vis[i]){
+	   //      DFS(adj, vis, i, st);   
+	   //     }
+	   // }
+	   // vector<int> ans;
+	   // while(!st.empty()){
+	   //     ans.push_back(st.top());
+	   //     st.pop();
+	   // }
+	   // return ans;
+	   
+	}
+};
