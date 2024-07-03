@@ -1,15 +1,6 @@
 class Solution {
 public:
-    void DFS( vector<vector<int>>& prerequisites, vector<bool>& vis, stack<int>& st, int u){
-        vis[u]=true;
-        
-        for(auto &v: prerequisites[u]){
-            if(!vis[v]){
-                DFS(prerequisites, vis, st, v);
-            }
-        }
-        st.push(u);
-    }
+    
     bool canFinish(int n, vector<vector<int>>& prerequisites) {
        queue<int> q;
         vector<int> indegree(n,0);
