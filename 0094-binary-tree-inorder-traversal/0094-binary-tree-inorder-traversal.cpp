@@ -20,25 +20,48 @@ public:
     //     inOrderTraversal(root->right, ans);
     // }
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> inorder;
-        
-        stack<TreeNode*> st;
-        TreeNode* node=root;
-
-        while(true){
-            if(node){
-                st.push(node);
-                node=node->left;
+//         Approach 2 TC->O(n) SC->O(1)
+        vector<int> result;
+        TreeNode* curr= root;
+        while(curr!=NULL){
+            if(curr->left == NULL){
+                result.push_back(curr->val);
+                curr=curr->right;
             }else{
-            
-            if(st.empty()) break;
-            node=st.top();
-            st.pop();
-            inorder.push_back(node->val);
-            node=node->right;
+                TreeNode* leftChild = curr->left;
+                
+                while(leftChild->right != NULL){
+                    leftChild = leftChild->right;
+                }
+                leftChild->right = curr;
+                TreeNode* temp = curr;
+                curr = curr->left;
+                temp->left = NULL;
             }
         }
-        return inorder;
+        return result;
+        
+        
+//         vector<int> inorder;
+        
+//         stack<TreeNode*> st;
+//         TreeNode* node=root;
+
+//         while(true){
+//             if(node){
+//                 st.push(node);
+//                 node=node->left;
+//             }else{
+            
+//             if(st.empty()) break;
+//             node=st.top();
+//             st.pop();
+//             inorder.push_back(node->val);
+//             node=node->right;
+//             }
+//         } 
+//         return inorder;
+        
         // vector<int> ans;
         // inOrderTraversal(root, ans);
         // return ans;
