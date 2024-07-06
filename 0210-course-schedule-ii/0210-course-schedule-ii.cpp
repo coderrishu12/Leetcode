@@ -7,7 +7,7 @@ public:
         for(auto &v: prerequisites){
             int a = v[0];
             int b = v[1];;
-                indegree[b]++;
+                indegree[a]++;
         }
         
         for(int i=0;i<n;i++){
@@ -24,15 +24,15 @@ public:
             for(auto &v: prerequisites){
                  int a = v[0];
                  int b = v[1];
-                if(u==a){
-                    indegree[b]--;
-                    if(indegree[b]==0){
-                        q.push(b);
+                if(u==b){
+                    indegree[a]--;
+                    if(indegree[a]==0){
+                        q.push(a);
                     }
                 }
             }
         }
-        reverse(result.begin(),result.end());
+        // reverse(result.begin(),result.end());
         return result.size()==n ? result : vector<int>();
     }
 };
