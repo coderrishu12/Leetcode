@@ -23,6 +23,8 @@ public:
             int x= node.first;
             int y= node.second;
             
+            if(x==m-1 && y==n-1) return d;
+            
             for(auto &dir: directions){
                 int x_ = x+ dir[0];
                 int y_ = y+ dir[1];
