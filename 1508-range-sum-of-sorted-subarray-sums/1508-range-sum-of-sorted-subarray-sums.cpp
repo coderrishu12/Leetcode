@@ -17,7 +17,7 @@ public:
         int result=0;
         sort(ans.begin(), ans.end());
         for(int i=left-1;i<right;i++){
-            cout<<ans[i]<<" ";
+            // cout<<ans[i]<<" ";
             result=(result + ans[i])%mod;
         }
         return result%mod;
