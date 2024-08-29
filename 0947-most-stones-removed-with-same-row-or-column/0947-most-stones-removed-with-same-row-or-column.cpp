@@ -15,9 +15,9 @@ public:
 //         if(parent_x!=parent_y) parent[parent_y]=parent_x;
 //     }
     void dfs(vector<vector<int>>& stones, int idx, vector<bool>& vis){
-        vis[idx]=true;
-        
-        for(int i=0;i<stones.size();i++){
+        vis[idx] = true;
+        int n = stones.size();
+        for(int i=0; i<n ; i++){
             if(!vis[i] && (stones[i][0] == stones[idx][0] || stones[i][1] == stones[idx][1])){
                 dfs(stones, i, vis);
             }
@@ -25,9 +25,11 @@ public:
     }
     int removeStones(vector<vector<int>>& stones) {
 //       Approach 2 By DFS
-        int n=stones.size();
+        int n = stones.size();
         vector<bool> vis(n, false);
+        
         int groups = 0;
+        
         for(int i=0;i<n;i++){
             if(vis[i]) continue;
             
@@ -35,7 +37,6 @@ public:
             groups++;
         }
         return n-groups;
-        
         
         
 //          Approach 1 By DSU        
